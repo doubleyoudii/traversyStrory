@@ -14,7 +14,7 @@ const port = process.env.PORT || 5000;
 const app = express();
 
 // Request Loggings
-if (process.env === "development") {
+if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 

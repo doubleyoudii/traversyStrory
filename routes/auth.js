@@ -4,10 +4,7 @@ const passport = require("passport");
 
 // desc Google-Login
 //route GET /auth/google
-router.get(
-  "/google",
-  passport.authenticate("google", { scope: ["profile", "openid"] })
-);
+router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 
 // desc Google auth call back
 // route GET /auth/google/callbacck

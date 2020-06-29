@@ -2,10 +2,12 @@ const path = require("path");
 const express = require("express");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
+const mongoose = require("mongoose");
 const exphbs = require("express-handlebars");
 const passport = require("passport");
 const session = require("express-session");
 const connectDb = require("./config/db");
+const MongoStore = require("connect-mongo")(session);
 
 // Load Env files
 dotenv.config({ path: "./config/config.env" });
@@ -35,6 +37,8 @@ app.use(
     secret: "StoryBook",
     resave: false,
     saveUninitialized: false,
+    // integrate session to connect mongo
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
 );
 

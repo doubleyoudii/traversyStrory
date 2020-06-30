@@ -3,7 +3,24 @@
 <p>This is your stories</p>
 
 {{#if stories}}
-
+<table class="stripped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each stories}}
+    <tr>
+      <td><a href="/stories/{{_id}}">{{title}}</a></td>
+      <td>{{createdAt}}</td>
+      <td><span class="dash-status">{{status}}</span></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
 {{elser}}
 <p>You have note created any Stories</p>
 {{/if}}

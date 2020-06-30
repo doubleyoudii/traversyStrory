@@ -16,13 +16,13 @@ router.get("/", ensureGuest, (req, res) => {
 // @route /dashboard
 router.get("/dashboard", ensureAuth, async (req, res) => {
   try {
-    const stories = new Story.find({ user: req.user.id }).lean();
+    const stories = await Story.find({ user: req.user.id }).lean();
     res.render("dashboard", {
       name: req.user.displayName,
       stories,
     });
-  } catch (error) {
-    console.error(error);
+  } catch (err) {
+    console.error(err);
     res.render("error/500");
   }
 });

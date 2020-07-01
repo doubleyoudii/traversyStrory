@@ -17,10 +17,11 @@
       <td><a href="/stories/{{_id}}">{{title}}</a></td>
       <td>{{createdAt}}</td>
       <td><span class="dash-status">{{status}}</span></td>
+      <td>edit delete</td>
     </tr>
     {{/each}}
   </tbody>
 </table>
-{{elser}}
-<p>You have note created any Stories</p>
+{{else}}
+<p>You have not created any Stories</p>
 {{/if}}

@@ -22,4 +22,21 @@ router.post("/", ensureAuth, async (req, res) => {
   }
 });
 
+// desc Fetch All stories and Render the hbs file
+// GET /
+router.get("/", ensureAuth, async (req, res) => {
+  try {
+    const stories = await Story.find({ status: "public" })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean();
+    res.render("stories/index", {
+      stories,
+    });
+  } catch (error) {
+    console.error(error);
+    res.render("error/500");
+  }
+});
+
 module.exports = router;
